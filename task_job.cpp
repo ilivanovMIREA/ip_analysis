@@ -2,7 +2,8 @@
 #include <cassert>
 #include <cstdlib>
 #include <string>
-#include <vector>
+#include <vector
+
 /*
 Целью задания является разработка ПО для анализа информации о трафике, прошедшим через некое сетевое устройство. Все хосты-участники считаются наблюдаемым сегментом сети.
 
@@ -194,9 +195,9 @@ auto firstTenNode(std::vector<std::vector<std::string>> &iter_pool){
     }
 
     std::sort(begin(ip_pool_int2), end(ip_pool_int2), std::greater<std::vector<int>>());
-    //ip_print_int(ip_pool_int2);
+    ip_print_int(ip_pool_int2); // получили отсортированные ip адресса
 
-
+    //
     
 
 
@@ -256,7 +257,8 @@ int main(int argc, char const *argv[])
                 ip_pool.push_back(v);
         }
 
-               
+        std::cout << "Всего строк в файле " << ip_pool.size() << std::endl; 
+        //ip_print(ip_pool);      
         std::cout << "Уникальных узлов сети, без портов: " << getAllIp(ip_pool) << std::endl;
         std::cout << "Cредняя скорость передачи данных всей наблюдаемой сети (байт/сек): " << getSpeed(ip_pool) << std::endl;
         std::cout << "Основываясь на данных о трафике, верно-ли утверждение UDP используется для передачи данных с максимальной пиковой скоростью?: " << getMaxUDPSpeed(ip_pool) << std::endl;
