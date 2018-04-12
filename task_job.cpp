@@ -197,7 +197,7 @@ auto firstTenNode(std::vector<std::vector<std::string>> &iter_pool){
     std::sort(begin(ip_pool_int2), end(ip_pool_int2), std::greater<std::vector<int>>());
     ip_print_int(ip_pool_int2); // получили отсортированные ip адресса
 
-    // df
+    // rsa
     
 
 
