@@ -2,8 +2,8 @@
 #include <cassert>
 #include <cstdlib>
 #include <string>
-#include <vector
-
+#include <vector>
+#include <algorithm>  
 /*
 Целью задания является разработка ПО для анализа информации о трафике, прошедшим через некое сетевое устройство. Все хосты-участники считаются наблюдаемым сегментом сети.
 
@@ -44,9 +44,11 @@ MAC хоста на который отправлены данные
 
 Исходный код, который был создан для выполнения задания и дающий ответ на вопросы задания, путем вывода на экран
 Инструкция по запуску исходного кода + перечень необходимых программных компонент для его запуска
-В случае использования платформы с компилируемым языком высокого уровня (С/C++/C#/golang/Java и т.п.) требуется приложить скопмилированный исполняемый файл или файл промежуточного представления (Java class/jar и т.п.)*/
-//test
-#include <algorithm>    // std::copy_if, std::distance
+В случае использования платформы с компилируемым языком высокого уровня (С/C++/C#/golang/Java и т.п.) требуется приложить скопмилированный исполняемый файл или файл промежуточного представления (Java class/jar и т.п.)
+*/
+
+
+
 
 using ip_v = std::vector<std::string>;
 
@@ -102,8 +104,8 @@ void ip_print_int(std::vector<std::vector<int>> &ip_filter){
 auto getAllIp(std::vector<std::vector<std::string>> &iter_pool){    
     std::vector<std::vector<int>> ip_pool_int1;
     std::vector<std::vector<int>> ip_pool_int2;
-    for(auto ip = iter_pool.begin(); ip != iter_pool.end(); ++ip){
-        
+
+    for(auto ip = iter_pool.begin(); ip != iter_pool.end(); ++ip){        
         
         ip_v temp = split((*ip)[0], ':');
         std::vector<std::string> one = split(temp[0], '.');
@@ -117,13 +119,13 @@ auto getAllIp(std::vector<std::vector<std::string>> &iter_pool){
     
         ip_v temp2 = split((*ip)[2], ':');
         std::vector<std::string> two = split(temp2[0], '.');
-        
+        /*
         std::vector<int> temp_int2;
         temp_int2.push_back(std::stoi(two[0],nullptr,10));
         temp_int2.push_back(std::stoi(two[1],nullptr,10));
         temp_int2.push_back(std::stoi(two[2],nullptr,10));
         temp_int2.push_back(std::stoi(two[3],nullptr,10));
-        ip_pool_int2.push_back(temp_int2);
+        ip_pool_int2.push_back(temp_int2);*/
     } 
     
     std::sort(begin(ip_pool_int1), end(ip_pool_int1), std::greater<std::vector<int>>());
@@ -260,9 +262,9 @@ int main(int argc, char const *argv[])
         std::cout << "Всего строк в файле " << ip_pool.size() << std::endl; 
         //ip_print(ip_pool);      
         std::cout << "Уникальных узлов сети, без портов: " << getAllIp(ip_pool) << std::endl;
-        std::cout << "Cредняя скорость передачи данных всей наблюдаемой сети (байт/сек): " << getSpeed(ip_pool) << std::endl;
-        std::cout << "Основываясь на данных о трафике, верно-ли утверждение UDP используется для передачи данных с максимальной пиковой скоростью?: " << getMaxUDPSpeed(ip_pool) << std::endl;
-        firstTenNode(ip_pool);
+        //std::cout << "Cредняя скорость передачи данных всей наблюдаемой сети (байт/сек): " << getSpeed(ip_pool) << std::endl;
+        //std::cout << "Основываясь на данных о трафике, верно-ли утверждение UDP используется для передачи данных с максимальной пиковой скоростью?: " << getMaxUDPSpeed(ip_pool) << std::endl;
+        //firstTenNode(ip_pool);
     }
     catch(const std::exception &e)
     {
